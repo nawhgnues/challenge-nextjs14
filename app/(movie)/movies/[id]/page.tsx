@@ -1,10 +1,9 @@
 import { Metadata } from "next";
-import { API_URL } from "../../../(home)/page";
 import MovieInfo from "../../../../components/movie-info";
 import MovieVideos from "../../../../components/movie-videos";
 import { Suspense } from "react";
 
-export const medadata: Metadata = {
+export const metadata: Metadata = {
   title: "Movie",
   description: "123123",
 };

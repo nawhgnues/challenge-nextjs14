@@ -1,5 +1,3 @@
-import { API_URL } from "../app/(home)/page";
-
 async function getVideos(id: string) {
   await new Promise((resolve) => setTimeout(resolve, 3000));
   throw new Error("something broke...");

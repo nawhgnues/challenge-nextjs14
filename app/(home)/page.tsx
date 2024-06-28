@@ -23,13 +23,12 @@
 */
 
 import Link from "next/link";
+import { API_URL } from "../constants";
 
 // +캐싱 기능, +메타 데이터 사용가능, +클라이언트에서 API 요청 없음,
 export const metadata = {
   title: "home",
 };
-
-export const API_URL = "https://nomad-movies.nomadcoders.workers.dev/movies";
 
 async function getMovies() {
   await new Promise((resolve) => setTimeout(resolve, 10000));
