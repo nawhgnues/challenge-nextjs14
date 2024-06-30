@@ -1,20 +1,18 @@
 import { Metadata } from "next";
+import "./styles/global.css";
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Next Metadata Test",
+    template: "%s | Billionaire",
     default: "Home",
   },
-  description: "Banana, Apple, Mango",
+  description: "Billionaire list",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
-        <h1>lalalala</h1>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

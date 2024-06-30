@@ -1,51 +1,44 @@
-/**
- * Fetching on client component 
- "use client";
- 
- import { useEffect, useState } from "react";
- 
- export default function Tomato() {
-   const [isLoading, setIsLoading] = useState(true);
-   const [movies, setMovies] = useState();
-   const getMovies = async () => {
-     const response = await fetch("https://nomad-movies.nomadcoders.workers.dev/movies");
-     const json = await response.json();
-     setMovies(json);
-     setIsLoading(false);
-   };
- 
-   useEffect(() => {
-     getMovies();
-   });
-   return <h1>{isLoading ? "Loading..." : JSON.stringify(movies)}</h1>;
- }
- * 
-*/
-
 import Link from "next/link";
 import { API_URL } from "../constants";
+import BillionaireCard from "../../components/billionaire-card";
+import styles from "../styles/home.module.css";
 
 // +캐싱 기능, +메타 데이터 사용가능, +클라이언트에서 API 요청 없음,
 export const metadata = {
-  title: "home",
+  title: "Home",
 };
 
-async function getMovies() {
-  await new Promise((resolve) => setTimeout(resolve, 10000));
+async function getBillions() {
   const response = await fetch(API_URL);
   const json = await response.json();
   return json;
 }
 
+interface Billionaire {
+  id: string;
+  name: string;
+  squareImage: string;
+  netWorth: number;
+  industries: string;
+}
+
 export default async function Tomato() {
-  const movies = await getMovies();
+  const billionaires = await getBillions();
   return (
-    <div>
-      {movies.map((movie) => (
-        <li key={movie.id}>
-          <Link href={`/movies/${movie.id}`}>{movie.title}</Link>
+    <ul className={styles.container}>
+      {billionaires.map((billionaire: Billionaire) => (
+        <li key={billionaire.id} className={styles.card}>
+          <Link href={`/billionaire/${billionaire.id}`} className={styles.link}>
+            <BillionaireCard
+              id={billionaire.id}
+              name={billionaire.name}
+              squareImage={billionaire.squareImage}
+              netWorth={billionaire.netWorth}
+              industries={billionaire.industries}
+            />
+          </Link>
         </li>
       ))}
-    </div>
+    </ul>
   );
 }

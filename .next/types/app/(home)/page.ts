@@ -1,4 +1,4 @@
-// File: C:\Users\owner\Documents\challenge-nextjs14\app\(home)\page.tsx
+// File: /Users/leeseunghwan/Documents/GitHub/challenge-nextjs14/app/(home)/page.tsx
 import * as entry from '../../../../app/(home)/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
